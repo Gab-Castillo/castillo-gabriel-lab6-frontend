@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+
+/* StokPile palette. Light values first, dark overrides below. */
+:root {
+  --bg: #f1f5f9;        /* Concrete Tint */
+  --surface: #ffffff;
+  --ink: #1a2229;       /* Heavy Slate */
+  --muted: #556274;     /* Raw Steel, darkened to pass contrast on Concrete */
+  --line: #e2e8f0;
+  --accent: #ff5722;    /* Signal Orange */
+  --accent-hover: #ff6b35;
+  --on-accent: #1a2229; /* dark text on orange: white on #ff5722 is only 3:1 */
+  --accent-text: #c2410c;
+  --ok: #047857;
+  --ok-bg: #d1fae5;
+  --warn: #9a3412;
+  --warn-bg: #ffedd5;
+  --bad: #b91c1c;
+  --bad-bg: #fee2e2;
+  --panel: #1a2229;     /* brand panel + top bar */
+  --panel-2: #242f3d;
+  --panel-ink: #f1f5f9;
+  --panel-muted: #a3b1c2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1519;
+    --surface: #1a2229;
+    --ink: #f1f5f9;
+    --muted: #9aa8b9;
+    --line: #2f3b49;
+    --accent-text: #ff8a65;
+    --ok: #34d399;
+    --ok-bg: #064e3b;
+    --warn: #fdba74;
+    --warn-bg: #431407;
+    --bad: #fca5a5;
+    --bad-bg: #450a0a;
+    --panel: #0a0f13;
+    --panel-2: #1a2229;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-accent-text: var(--accent-text);
+  --color-ok: var(--ok);
+  --color-ok-bg: var(--ok-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-bad: var(--bad);
+  --color-bad-bg: var(--bad-bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-panel-ink: var(--panel-ink);
+  --color-panel-muted: var(--panel-muted);
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Archivo Variable", "IBM Plex Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html { color-scheme: light dark; }
+  body { @apply bg-bg font-sans text-ink antialiased; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-accent; }
+}
+
+@utility font-heading {
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
